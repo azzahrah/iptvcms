@@ -10,12 +10,12 @@ $sqlCount = ""; // "select count(*) from view_edit_vehicle ";
 $response['total'] = 0;
 $response['rows'] = array();
 
-$sqlQuery = "SELECT * from channels order by name DESC limit $offset,$rows";
-$sqlCount = "select count(*) as total from channels";
+$sqlQuery = "SELECT * from devices order by name DESC limit $offset,$rows";
+$sqlCount = "select count(*) as total from devices";
 $result = $mysqli->query($sqlCount);
 if ($result) {
     $row = $result->fetch_assoc();
-    $response['total'] = $row["total"];
+    $response["total"] = $row["total"];
     $result->free();
 }
 $result = $mysqli->query($sqlQuery);

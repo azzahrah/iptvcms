@@ -59,7 +59,7 @@
         </style>     
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.min.js?v=1.0.0"></script>
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.easyui.min.js?v=1.0.0"></script>
-        <script type="text/javascript" src="js/iptv.js?v=1.0.1"></script>
+        <script type="text/javascript" src="js/iptv.js?v=1.0.6"></script>
     </head>
     <div id="winAlarm" class="easyui-window" closed="true" style="width:300px;height:300px;">
     </div>
@@ -75,6 +75,7 @@
                         <li><span>Streaming</span></li>
                         <li><span>Schedule</span></li>
                         <li><span>Running Text</span></li>
+                        <li><span>Devices</span></li>
                     </ul>
                 </li>
             </ul>
@@ -100,8 +101,8 @@
 
                 </div>
                 <div
-                    data-options="title:'IPTV Client', 
-                    href:'scripts/page_schedule.php?v=1.0.0',
+                    data-options="title:'Devices', 
+                    href:'scripts/page_devices.php?v=1.0.0',
                     onLoad: function () {
                         //app.init();
                     }"
