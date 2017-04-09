@@ -10,8 +10,8 @@ $sqlCount = ""; // "select count(*) from view_edit_vehicle ";
 $response['total'] = 0;
 $response['rows'] = array();
 
-$sqlQuery = "SELECT * from channels order by name DESC limit $offset,$rows";
-$sqlCount = "select count(*) as total from channels";
+$sqlQuery = "SELECT * from view_channels order by name DESC limit $offset,$rows";
+$sqlCount = "select count(*) as total from view_channels";
 $result = $mysqli->query($sqlCount);
 if ($result) {
     $row = $result->fetch_assoc();

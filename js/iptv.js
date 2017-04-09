@@ -77,14 +77,23 @@ app.del_channel = function () {
 app.search_channel = function () {
 
 };
-app.set_main_display = function () {
+app.lock_channel = function () {
     var row = app.streaming.datagrid.getSelected('selected');
     if (row === null || row === undefined) {
         alert('select stream');
         return;
     }
-    app.websocket.websocket.send('set_main_display,' + row.id);
+    var msg={
+        tag:'broadcast',
+        sub_tag:'lock_channel',
+        channel_id:row.id
+    };
+    app.websocket.websocket.send(JSON.stringify(msg));
 };
-app.disable_main_display = function () {
-    app.websocket.websocket.send('disable_main_display');
+app.unlock_channel = function () {
+    var msg={
+        tag:'broadcast',
+        sub_tag:'unlock_channel'
+    };
+    app.websocket.websocket.send(JSON.stringify(msg));
 };

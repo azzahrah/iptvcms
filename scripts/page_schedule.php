@@ -1,4 +1,4 @@
-<table id="grid_channel" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_channel.php"  pagination="true"  toolbar='#tb_channel' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
+<table id="grid_schedule" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_channel.php"  pagination="true"  toolbar='#tb_schedule' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
     <thead>
         <tr>
             <th field="icon" width="40" align="center">ID</th>             
@@ -12,7 +12,7 @@
     </thead>
 </table
 <!-- Toolbar -->
-<div id="tb_channel" style="padding: 3px 5px;">
+<div id="tb_schedule" style="padding: 3px 5px;">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true"  onclick="app.search_channel($('#txt_channels').val());">Cari</a>&nbsp;|&nbsp;
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.add_channel();">Add</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.edit_channel();">Edit</a>
@@ -23,7 +23,7 @@
     
 </div>
 <!-- Form GPS -->
-<div id="dlg_channel" class="easyui-dialog" title="Add Streaming" style="width:400px;height:300px;padding:15px;overflow: hidden;" iconCls="icon-save" closed="true" buttons="#dlg_btn_channel">
+<div id="dlg_schedule" class="easyui-dialog" title="Add Streaming" style="width:400px;height:300px;padding:15px;overflow: hidden;" iconCls="icon-save" closed="true" buttons="#dlg_btn_schedule">
     <form id="form_channel" method="POST" novalidate>
         <table>
             <tr><td style="width: 100px;">Category</td><td style="width:250px">
@@ -41,7 +41,7 @@
         </table>	
     </form>
 </div>
-<div id="dlg_btn_channel">
+<div id="dlg_btn_schedule">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="app.save_channel()">Save</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_channel').dialog('close');">Cancel</a>
 </div>

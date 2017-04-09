@@ -6,6 +6,7 @@
             <th field="ip" width="150" align="left">IP</th>                                                    
             <th field="last_connect" width="120" align="left">Last Connect</th>
             <th field="last_channel" width="120" align="left">Last Channel</th>
+            <th field="last_info" width="400" align="left">Last Info</th>
         </tr>
     </thead>
 </table

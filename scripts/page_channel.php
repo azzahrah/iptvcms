@@ -1,24 +1,24 @@
 <table id="grid_channel" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_channel.php"  pagination="true"  toolbar='#tb_channel' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
     <thead>
         <tr>
-            <th field="icon" width="40" align="center">ID</th>             
-            <th field="main_display" width="150" align="left">Main Display</th>
-            <th field="category" width="150" align="left">Category</th>
-            <th field="name" width="150" align="left">Channel</th>
-            <th field="picture" width="120" align="center">Picture</th>                                        
-            <th field="sid" width="120" align="center">SID</th>                                        
-            <th field="descr" width="120" align="left">Description</th>
+            <th field="id" width="40" align="center">ID</th>             
+            <th field="lock" width="60" align="left">Lock</th>
+            <th field="category" width="100" align="left">Category</th>
+            <th field="name" width="200" align="left">Channel</th>            
+            <th field="url" width="350" align="left">URL</th>       
+            <th field="descr" width="400" align="left">Last Info</th>
+            
         </tr>
     </thead>
 </table
 <!-- Toolbar -->
 <div id="tb_channel" style="padding: 3px 5px;">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true"  onclick="app.search_channel($('#txt_channels').val());">Cari</a>&nbsp;|&nbsp;
+<!--    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true"  onclick="app.search_channel($('#txt_channels').val());">Cari</a>&nbsp;|&nbsp;-->
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.add_channel();">Add</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.edit_channel();">Edit</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_channel();">Delete</a>&nbsp;|&nbsp;
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.set_main_display();">Set Main Display</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.release_main_display();">Release Display</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.lock_channel();">Lock</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.unlock_channel();">Unlock</a>
     
     
 </div>
@@ -32,10 +32,10 @@
                         <option value="VOD">VOD</option>
                     </select>
                 </td></tr>
-            <tr><td>Channel/Streaming</td><td><input name="name" class="easyui-textbox" data-options="height:30,width:'100%'"></td></tr>           
+            <tr><td>Channel Name</td><td><input name="name" class="easyui-textbox" data-options="height:30,width:'100%'"></td></tr>           
             <tr><td>URL</td><td><input name="url" class="easyui-textbox" data-options="height:30,width:'100%'"></td></tr>           
-            <tr><td>Descriptions</td><td><input  name="descr"  class="easyui-textbox" data-options="height:30,width:'100%'"/></td></tr>            
-            <tr><td>Picture</td><td><input name="picture" class="easyui-filebox" data-options="height:30,width:'100%'"></td></tr>            
+            
+<!--            <tr><td>Picture</td><td><input name="picture" class="easyui-filebox" data-options="height:30,width:'100%'"></td></tr>            -->
 
 
         </table>	

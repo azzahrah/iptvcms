@@ -1,9 +1,9 @@
-<?php // require_once 'scripts/session.php';   ?>
+<?php // require_once 'scripts/session.php';    ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>GPS Tracking System</title>
+        <title>IPTV - CMS</title>
         <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5.1/themes/bootstrap/easyui.css">
         <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5.1/themes/icon.css?v=1.0.0">
         <link rel="stylesheet" type="text/css" href="css/style.css?v=1.0.0">
@@ -64,26 +64,43 @@
     <div id="winAlarm" class="easyui-window" closed="true" style="width:300px;height:300px;">
     </div>
     <body id="main" class="easyui-layout">
-        <div data-options="region:'north', bodyCls: 'topCss'" style="height:45px;padding:3px;10px;">
-            <b>IPTV Content Management System</b>
+        <div data-options="region:'north', bodyCls: 'topCss'" style="height:45px;padding:5px 10px;">
+            <b style="font-size:18px;">IPTV Content Management System</b>
         </div>
-        <div data-options="region:'west'" data-options="split:true" style="width:300px;">
-            <ul id="treeMenu" class="easyui-tree">
-                <li>
-                    <span>Menu</span>
-                    <ul>
-                        <li><span>Streaming</span></li>
-                        <li><span>Schedule</span></li>
-                        <li><span>Running Text</span></li>
-                        <li><span>Devices</span></li>
+        <div data-options="region:'south',title:'Log Info', bodyCls: 'topCss'" style="height:250px;">
+            <table id="grid_log" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_log.php"  pagination="true"  toolbar='#tb_log' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
+                <thead>
+                    <tr>           
+                        <th field="ldate" width="150" align="left">Date</th>
+                        <th field="priory" width="150" align="left">Priority</th>                                                    
+                        <th field="category" width="120" align="left">Category</th>
+                        <th field="msg" width="700" align="left">Message</th>
+                    </tr>
+                </thead>
+            </table
+            <!-- Toolbar -->
+            <div id="tb_log" style="padding: 3px 5px;">
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.log_delete();">Delete</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.log_clear();">Clear</a>
+            </div>
+        </div>
+        <!--        <div data-options="region:'west'" data-options="split:true" style="width:300px;">
+                    <ul id="treeMenu" class="easyui-tree">
+                        <li>
+                            <span>Menu</span>
+                            <ul>
+                                <li><span>Streaming</span></li>
+                                <li><span>Schedule</span></li>
+                                <li><span>Running Text</span></li>
+                                <li><span>Devices</span></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div>        
+                </div>        -->
         <div data-options="region:'center'">
             <div class="easyui-tabs" data-options="fit:true">
                 <div
-                    data-options="title:'Streaming', 
+                    data-options="title:'Channels', 
                     href:'scripts/page_channel.php?v=1.0.0',
                     onLoad: function () {
                     app.init();
@@ -95,7 +112,7 @@
                     data-options="title:'Schedule', 
                     href:'scripts/page_schedule.php?v=1.0.0',
                     onLoad: function () {
-                        //app.init();
+                    //app.init();
                     }"
                     >
 
@@ -104,7 +121,7 @@
                     data-options="title:'Devices', 
                     href:'scripts/page_devices.php?v=1.0.0',
                     onLoad: function () {
-                        //app.init();
+                    //app.init();
                     }"
                     >
 
