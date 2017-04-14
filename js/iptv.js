@@ -123,7 +123,7 @@ app.lock_channel = function () {
     var msg = {
         tag: 'broadcast',
         sub_tag: 'lock_channel',
-        channel_id: row.id
+        url: row.url
     };
     app.websocket.send(JSON.stringify(msg));
     setTimeout(function () {
