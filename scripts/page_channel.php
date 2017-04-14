@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th field="id" width="40" align="center">ID</th>             
-            <th field="lock" width="60" align="left">Lock</th>
+            <th field="lock" width="60" align="left" formatter="format_lock">Lock</th>
             <th field="category" width="100" align="left">Category</th>
             <th field="name" width="200" align="left">Channel</th>            
             <th field="url" width="350" align="left">URL</th>       
@@ -19,17 +19,21 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_channel();">Delete</a>&nbsp;|&nbsp;
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.lock_channel();">Lock</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.unlock_channel();">Unlock</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.update_channel();">Update Channel</a>
     
     
 </div>
 <!-- Form GPS -->
 <div id="dlg_channel" class="easyui-dialog" title="Add Streaming" style="width:400px;height:300px;padding:15px;overflow: hidden;" iconCls="icon-save" closed="true" buttons="#dlg_btn_channel">
     <form id="form_channel" method="POST" novalidate>
+        <input type="hidden" name="id">
+        <input type="hidden" name="mode">       
         <table>
             <tr><td style="width: 100px;">Category</td><td style="width:250px">
-                    <select name="category" class="easyui-combobox" name="dept"  data-options="height:30,width:'100%'">
+                    <select name="category" class="easyui-combobox"  data-options="height:30,width:'100%'">
                         <option value="TV">TV</option>
                         <option value="VOD">VOD</option>
+                        <option value="ADV">Advertising</option>
                     </select>
                 </td></tr>
             <tr><td>Channel Name</td><td><input name="name" class="easyui-textbox" data-options="height:30,width:'100%'"></td></tr>           
@@ -42,6 +46,6 @@
     </form>
 </div>
 <div id="dlg_btn_channel">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="app.save_channel()">Save</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_channel').dialog('close');">Cancel</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onClick="app.save_channel();">Save</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onClick="javascript:$('#dlg_channel').dialog('close');">Cancel</a>
 </div>

@@ -5,8 +5,8 @@ $level = isset($_SESSION['user_level']) ? $mysqli->real_escape_string($_SESSION[
 
 $id = isset($_POST['id']) ? intval($_POST['id']) : 0; //755
 $mode = isset($_POST['mode']) ? $mysqli->real_escape_string($_POST['mode']) : ''; //edit
-$name = isset($_POST['name']) ? $mysqli->real_escape_string($_POST['name']) : '';
-$category = isset($_POST['category']) ? $mysqli->real_escape_string($_POST['category']) : '';
+$runningtext = isset($_POST['runningtext']) ? $mysqli->real_escape_string($_POST['runningtext']) : '';
+$visible = isset($_POST['visible']) ? intval($_POST['visible']) : 0;
 $url = isset($_POST['url']) ? $mysqli->real_escape_string($_POST['url']) : '';
 
 $response = array();
@@ -17,35 +17,33 @@ $response['mode'] = $mode;
 $sql = "";
 switch ($mode) {
     case "add":
-        $sql = "INSERT INTO channels (`name`,`category`,`url`) ";
-        $sql .= " VALUES(";
-        $sql .= "'" . $name . "','" . $category . "',";
-        $sql .= "'" . $url . "')";
+        $sql = "INSERT INTO runningtext (`runningtext`,`visible`) ";
+        $sql .= " VALUES('" . $runningtext . "','" . $visible . "')";
 
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Add Channel Success';
+            $response['msg'] = 'Add runningtext Success';
         } else {
             $response['msg'] = $mysqli->error;
         }
         break;
     case 'edit':
         //if (($user_level == 'admin') || ($user_level == 'reseller')) {
-        $sql = "UPDATE channels SET name='" . $name . "',category='" . $category . "',";
-        $sql .= "url='" . $url . "' where id='". $id ."'";
+        $sql = "UPDATE runningtext SET runningtext='" . $runningtext . "',visible='" . $visible . "' where id='". $id ."'";
 
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Edit Channel Success';
+            $response['msg'] = 'Edit runningtext Success';
         } else {
             $response['msg'] = $mysqli->error;
         }
+        $mysqli->close();
         break;
     case 'delete':
-        $sql = "DELETE FROM channels where id='" . $id . "'";
+        $sql = "DELETE FROM runningtext where id='" . $id . "'";
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Delete Channel Success';
+            $response['msg'] = 'Delete runningtext Success';
         } else {
             $response['msg'] = $mysqli->error;
         }

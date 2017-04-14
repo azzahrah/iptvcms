@@ -5,9 +5,9 @@ $level = isset($_SESSION['user_level']) ? $mysqli->real_escape_string($_SESSION[
 
 $id = isset($_POST['id']) ? intval($_POST['id']) : 0; //755
 $mode = isset($_POST['mode']) ? $mysqli->real_escape_string($_POST['mode']) : ''; //edit
-$name = isset($_POST['name']) ? $mysqli->real_escape_string($_POST['name']) : '';
-$category = isset($_POST['category']) ? $mysqli->real_escape_string($_POST['category']) : '';
-$url = isset($_POST['url']) ? $mysqli->real_escape_string($_POST['url']) : '';
+$channel_id = isset($_POST['channel_id']) ? intval($_POST['channel_id']) : 0;
+$start_time= isset($_POST['start_time']) ? $mysqli->real_escape_string($_POST['start_time']) : '';
+$descr= isset($_POST['descr']) ? $mysqli->real_escape_string($_POST['descr']) : '';
 
 $response = array();
 $response['code'] = 'ERROR';
@@ -17,35 +17,34 @@ $response['mode'] = $mode;
 $sql = "";
 switch ($mode) {
     case "add":
-        $sql = "INSERT INTO channels (`name`,`category`,`url`) ";
+        $sql = "INSERT INTO schedule (`start_time`,`channel_id`,`descr`) ";
         $sql .= " VALUES(";
-        $sql .= "'" . $name . "','" . $category . "',";
-        $sql .= "'" . $url . "')";
+        $sql .= "'" . $start_time . "','" . $channel_id . "','" . $descr . "')";
 
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Add Channel Success';
+            $response['msg'] = 'Add Schedule Success';
         } else {
             $response['msg'] = $mysqli->error;
         }
         break;
     case 'edit':
         //if (($user_level == 'admin') || ($user_level == 'reseller')) {
-        $sql = "UPDATE channels SET name='" . $name . "',category='" . $category . "',";
-        $sql .= "url='" . $url . "' where id='". $id ."'";
+        $sql = "UPDATE schedule SET start_time='" . $start_time . "',channel_id='" . $channel_id . "',";
+        $sql .= "descr='" . $descr . "' where id='". $id ."'";
 
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Edit Channel Success';
+            $response['msg'] = 'Edit Schedule Success';
         } else {
             $response['msg'] = $mysqli->error;
         }
         break;
     case 'delete':
-        $sql = "DELETE FROM channels where id='" . $id . "'";
+        $sql = "DELETE FROM schedule where id='" . $id . "'";
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
-            $response['msg'] = 'Delete Channel Success';
+            $response['msg'] = 'Delete Schedule Success';
         } else {
             $response['msg'] = $mysqli->error;
         }

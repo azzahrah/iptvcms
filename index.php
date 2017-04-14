@@ -1,4 +1,4 @@
-<?php // require_once 'scripts/session.php';    ?>
+<?php require_once 'scripts/session.php';    ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,20 +59,24 @@
         </style>     
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.min.js?v=1.0.0"></script>
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.easyui.min.js?v=1.0.0"></script>
-        <script type="text/javascript" src="js/iptv.js?v=1.0.6"></script>
+        <script type="text/javascript" src="js/f.js?v=1.0.19"></script>
+        <script type="text/javascript" src="js/iptv.js?v=1.0.19"></script>
     </head>
     <div id="winAlarm" class="easyui-window" closed="true" style="width:300px;height:300px;">
     </div>
     <body id="main" class="easyui-layout">
         <div data-options="region:'north', bodyCls: 'topCss'" style="height:45px;padding:5px 10px;">
             <b style="font-size:18px;">IPTV Content Management System</b>
+            <div style="position:absolute;top:5px;right:10px;">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="app.do_logout();">Logout</a>
+            </div>
         </div>
         <div data-options="region:'south',title:'Log Info', bodyCls: 'topCss'" style="height:250px;">
             <table id="grid_log" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_log.php"  pagination="true"  toolbar='#tb_log' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
                 <thead>
                     <tr>           
                         <th field="ldate" width="150" align="left">Date</th>
-                        <th field="priory" width="150" align="left">Priority</th>                                                    
+                        <th field="priority" width="150" align="left">Priority</th>                                                    
                         <th field="category" width="120" align="left">Category</th>
                         <th field="msg" width="700" align="left">Message</th>
                     </tr>
@@ -80,8 +84,8 @@
             </table
             <!-- Toolbar -->
             <div id="tb_log" style="padding: 3px 5px;">
-                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.log_delete();">Delete</a>
-                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.log_clear();">Clear</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_log();">Delete</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="app.clear_log();">Clear</a>
             </div>
         </div>
         <!--        <div data-options="region:'west'" data-options="split:true" style="width:300px;">
@@ -100,10 +104,29 @@
         <div data-options="region:'center'">
             <div class="easyui-tabs" data-options="fit:true">
                 <div
-                    data-options="title:'Channels', 
+                    data-options="title:'Channel', 
                     href:'scripts/page_channel.php?v=1.0.0',
                     onLoad: function () {
                     app.init();
+                    }"
+                    >
+
+                </div>
+                
+                <div
+                    data-options="title:'Device', 
+                    href:'scripts/page_device.php?v=1.0.0',
+                    onLoad: function () {
+                    //app.init();
+                    }"
+                    >
+
+                </div>
+                 <div
+                    data-options="title:'Runningtext', 
+                    href:'scripts/page_runningtext.php?v=1.0.0',
+                    onLoad: function () {
+                    //app.init();
                     }"
                     >
 
@@ -118,8 +141,8 @@
 
                 </div>
                 <div
-                    data-options="title:'Devices', 
-                    href:'scripts/page_devices.php?v=1.0.0',
+                    data-options="title:'User', 
+                    href:'scripts/page_user.php?v=1.0.0',
                     onLoad: function () {
                     //app.init();
                     }"
