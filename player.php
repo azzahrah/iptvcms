@@ -78,9 +78,12 @@
                 };
                 swfobject.embedSWF("js/GrindPlayer.swf", "player", "290", "300", "10.2", null, flashvars, params, attrs);
             };
-//            $(document).ready(function () {
-//
-//            });
+            $(document).ready(function () {
+                var node = {
+                    url: 'http://192.168.0.83:81/udp/239.100.0.0:1234';
+                };
+                play(node);
+            });
 
         </script>
     </head>
