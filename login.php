@@ -201,7 +201,7 @@ if (isset($_POST['username'])) {
             <form method="post">
                 <label for="username">Username:</label> <input type="text" id="username" name="username">
                     <label for="password">Password:</label> <input type="password" id="password" name="password">
-                        <div id="lower"> <input type="checkbox"><label class="check" for="checkbox">Keep me logged in</label><input type="submit" value="Login"></div>
+                        <div id="lower"> <input type="submit" value="Login"></div>
                                     </form>
                                     </div>
                                     </body>

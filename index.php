@@ -59,16 +59,16 @@
         </style>     
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.min.js?v=1.0.0"></script>
         <script type="text/javascript" src="js/jquery-easyui-1.5.1/jquery.easyui.min.js?v=1.0.0"></script>
-        <script type="text/javascript" src="js/f.js?v=1.0.19"></script>
-        <script type="text/javascript" src="js/iptv.js?v=1.0.19"></script>
+        <script type="text/javascript" src="js/f.js?v=1.0.26"></script>
+        <script type="text/javascript" src="js/iptv.js?v=1.0.28"></script>
     </head>
     <div id="winAlarm" class="easyui-window" closed="true" style="width:300px;height:300px;">
     </div>
     <body id="main" class="easyui-layout">
         <div data-options="region:'north', bodyCls: 'topCss'" style="height:45px;padding:5px 10px;">
-            <b style="font-size:18px;">IPTV Content Management System</b>
+            <b style="font-size:18px;">IPTV Content Management System <?php echo $_SESSION['user_level'];?></b>
             <div style="position:absolute;top:5px;right:10px;">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="app.do_logout();">Logout</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="app.logout();">Logout</a>
             </div>
         </div>
         <div data-options="region:'south',title:'Log Info', bodyCls: 'topCss'" style="height:250px;">
@@ -103,16 +103,26 @@
                 </div>        -->
         <div data-options="region:'center'">
             <div class="easyui-tabs" data-options="fit:true">
+                <?php if($_SESSION['user_level']=='admin'){ ?>
+                <div
+                    data-options="title:'Media', 
+                    href:'scripts/page_media.php?v=1.0.0'"
+                    >
+
+                </div>
+                <?php } ?>
+                <?php if($_SESSION['user_level']=='admin'){ ?>
                 <div
                     data-options="title:'Channel', 
                     href:'scripts/page_channel.php?v=1.0.0',
                     onLoad: function () {
-                    app.init();
+                    //app.init();
                     }"
                     >
 
                 </div>
-                
+                <?php } ?>
+                <?php if($_SESSION['user_level']=='admin'){ ?>
                 <div
                     data-options="title:'Device', 
                     href:'scripts/page_device.php?v=1.0.0',
@@ -120,8 +130,8 @@
                     //app.init();
                     }"
                     >
-
                 </div>
+                 <?php } ?>
                  <div
                     data-options="title:'Runningtext', 
                     href:'scripts/page_runningtext.php?v=1.0.0',

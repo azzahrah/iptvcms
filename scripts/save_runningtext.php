@@ -1,4 +1,5 @@
 <?php
+
 require_once 'session.php';
 require_once 'connection.php';
 $level = isset($_SESSION['user_level']) ? $mysqli->real_escape_string($_SESSION['user_level']) : '';
@@ -29,7 +30,7 @@ switch ($mode) {
         break;
     case 'edit':
         //if (($user_level == 'admin') || ($user_level == 'reseller')) {
-        $sql = "UPDATE runningtext SET runningtext='" . $runningtext . "',visible='" . $visible . "' where id='". $id ."'";
+        $sql = "UPDATE runningtext SET runningtext='" . $runningtext . "',visible='" . $visible . "' where id='" . $id . "'";
 
         if ($mysqli->query($sql)) {
             $response['code'] = 'SUCCESS';
@@ -37,7 +38,23 @@ switch ($mode) {
         } else {
             $response['msg'] = $mysqli->error;
         }
-        $mysqli->close();
+        break;
+    case 'default':
+        //if (($user_level == 'admin') || ($user_level == 'reseller')) {
+        $sql = "UPDATE runningtext SET visible='0'";
+        if ($mysqli->query($sql)) {
+            $sql = "UPDATE runningtext SET visible='1' where id='" . $id . "'";
+            if ($mysqli->query($sql)) {
+                $response['code'] = 'SUCCESS';
+                $response['msg'] = 'Edit runningtext Success';
+            } else {
+                $response['msg'] = $mysqli->error;
+            }
+        } else {
+            $response['msg'] = $mysqli->error;
+        }
+
+
         break;
     case 'delete':
         $sql = "DELETE FROM runningtext where id='" . $id . "'";

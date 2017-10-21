@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th field="id" width="40" align="center">ID</th>             
-            <th field="visible" width="70" align="left" formatter="format_yesno">Visible</th>
+            <th field="visible" width="70" align="left" formatter="format_yesno">Default</th>
             <th field="runningtext" width="800" align="left">Running Text</th>
         </tr>
     </thead>
@@ -13,6 +13,7 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.add_runningtext();">Add</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.edit_runningtext();">Edit</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_runningtext();">Delete</a>&nbsp;|&nbsp;
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.default_runningtext();">Default</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.update_runningtext();">Update Runningtext</a>
 <!--    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="app.hide_runningtext();">Hide Runningtext</a>-->
     

@@ -1,7 +1,7 @@
 <table id="grid_channel" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_channel.php"  pagination="true"  toolbar='#tb_channel' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
     <thead>
         <tr>
-            <th field="id" width="40" align="center">ID</th>             
+            <th field="nomor" width="70" align="center">No.Urut</th>             
             <th field="lock" width="60" align="left" formatter="format_lock">Lock</th>
             <th field="category" width="100" align="left">Category</th>
             <th field="name" width="200" align="left">Channel</th>            
@@ -29,6 +29,7 @@
         <input type="hidden" name="id">
         <input type="hidden" name="mode">       
         <table>
+            <tr><td>No Urut</td><td><input name="nomor" class="easyui-textbox" data-options="height:30,width:'100%'"></td></tr>           
             <tr><td style="width: 100px;">Category</td><td style="width:250px">
                     <select name="category" class="easyui-combobox"  data-options="height:30,width:'100%'">
                         <option value="TV">TV</option>

@@ -12,8 +12,8 @@ $sqlCount = ""; // "select count(*) from view_edit_vehicle ";
 $response['total'] = 0;
 $response['rows'] = array();
 
-$sqlQuery = "SELECT * from view_channels order by nomor ASC limit $offset,$rows";
-$sqlCount = "select count(*) as total from view_channels";
+$sqlQuery = "SELECT * from view_media order by id ASC limit $offset,$rows";
+$sqlCount = "select count(*) as total from view_media";
 $result = $mysqli->query($sqlCount);
 if ($result) {
     $row = $result->fetch_assoc();

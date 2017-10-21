@@ -1,7 +1,7 @@
 <table id="grid_device" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_device.php"  pagination="true"  toolbar='#tb_device' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
     <thead>
-        <tr>
-            <th field="id" width="40" align="center">ID</th>             
+        <tr>          
+            <th field="mac" width="150" align="left">Mac</th>
             <th field="name" width="150" align="left">Device Name</th>
             <th field="ip" width="150" align="left">IP</th>     
             <th field="descr" width="400" align="left">Descr</th>
@@ -15,6 +15,7 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.add_device();">Add</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.edit_device();">Edit</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_device();">Delete</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.refresh_device();">Refresh</a>
 </div>
 <!-- Form GPS -->
 <div id="dlg_device" class="easyui-dialog" title="Add Streaming" style="width:400px;height:300px;padding:15px;overflow: hidden;" iconCls="icon-save" closed="true" buttons="#dlg_btn_device">

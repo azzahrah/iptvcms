@@ -1,3 +1,4 @@
+<?php require_once("session.php"); ?>
 <table id="grid_user" class="easyui-datagrid" style="width:600px;height:250px"  url="scripts/data_user.php"  pagination="true"  toolbar='#tb_user' rownumbers="true" fitColumns="false" sortName="install_date" sortOrder="desc" singleSelect="true" fit="true">
     <thead>
         <tr>
@@ -12,10 +13,11 @@
 <!-- Toolbar -->
 <div id="tb_user" style="padding: 3px 5px;">
     <!--    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true"  onclick="app.search_channel($('#txt_channels').val());">Cari</a>&nbsp;|&nbsp;-->
+    <?php if($_SESSION['user_level']=='admin'){ ?>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.add_user();">Add</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.edit_user();">Edit</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.del_user();">Delete</a>
-
+    <?php } ?>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.refresh_user();">Refresh</a>
 
 </div>

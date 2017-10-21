@@ -1,5 +1,6 @@
 //var ip = "ws://127.0.0.1:7070/websocket";
-var ip = "ws://192.168.1.81:7070/websocket";
+//var ip = "ws://192.168.0.81:7070/websocket";
+var ip = "ws://192.168.1.107:7070/websocket";
 var ws;
 var app = {
 
@@ -273,7 +274,7 @@ app.edit_runningtext = function () {
     }
     row['mode'] = 'edit';
     $("#form_runningtext").form('load', row);
-    $("#dlg_runningtext").dialog('center').dialog('show').dialog('setTitle', 'Edit runningtext');
+    $("#dlg_runningtext").dialog('open').dialog('center').dialog('setTitle', 'Edit runningtext');
 };
 app.del_runningtext = function () {
     var row = $("#grid_runningtext").datagrid('getSelected');
@@ -284,6 +285,20 @@ app.del_runningtext = function () {
     row['mode'] = 'delete';
     $("#form_runningtext").form('load', row);
     $.messager.confirm('Confirm', 'Are you sure you want to delete record?', function (r) {
+        if (r) {
+            app.save_runningtext();
+        }
+    });
+};
+app.default_runningtext = function () {
+    var row = $("#grid_runningtext").datagrid('getSelected');
+    if (row === null) {
+        alert('Select Data to Delete');
+        return;
+    }
+    row['mode'] = 'default';
+    $("#form_runningtext").form('load', row);
+    $.messager.confirm('Confirm', 'Are you sure you want to set default?', function (r) {
         if (r) {
             app.save_runningtext();
         }
@@ -435,3 +450,74 @@ app.save_schedule = function () {
 app.refresh_schedule = function () {
     $("#grid_schedule").datagrid('reload');
 };
+/*media */
+
+app.add_media = function () {
+    $("#dlg_media").dialog('open').dialog('center').dialog('setTitle', 'Add Media');
+    $("#form_media").form('load', {mode: 'add', id: 0});
+};
+app.edit_media = function () {
+    var row = $("#grid_media").datagrid('getSelected');
+    if (row === null) {
+        alert('Select Media to Edit');
+        return;
+    }
+    row['mode'] = 'edit';
+    $("#form_media").form('load', row);
+    $("#dlg_media").dialog('open').dialog('center').dialog('setTitle', 'Delete Media');
+};
+app.del_media = function () {
+    var row = $("#grid_media").datagrid('getSelected');
+    if (row === null) {
+        alert('Select Media to Edit');
+        return;
+    }
+    row['mode'] = 'delete';
+    console.log(row);
+    $("#form_media").form('load', row);
+    $.messager.confirm('Confirm', 'Are you sure you want to delete record?', function (r) {
+        if (r) {
+            $('#form_media').form('submit', {
+                url: 'scripts/save_media.php',
+                onSubmit: function () {
+                    // do some check
+                    // return false to prevent submit;
+                },
+                success: function (data) {
+                    console.log(data);
+                    app.refresh_media();
+                }
+            });
+        }
+    });
+};
+app.save_media = function () {
+    $('#form_media').form('submit', {
+        url: 'scripts/save_media.php',
+        onSubmit: function () {
+            // do some check
+            // return false to prevent submit;
+        },
+        success: function (data) {
+            console.log(data);
+            app.refresh_media();
+        }
+    });
+};
+app.refresh_media = function () {
+    $("#grid_media").datagrid('reload');
+};
+app.logout=function(){
+  $.messager.confirm('Logout Confirm','Are you sure Logout?',function(f){
+     if(f){
+         window.location.href='logout.php';
+     } 
+  });  
+};
+
+
+$(function(){
+   setTimeout(function(){
+       app.init();
+   },2000); 
+});

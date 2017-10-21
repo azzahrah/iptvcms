@@ -8,7 +8,7 @@ format_yesno = function (val, row) {
     if (parseInt(val, 10) === 1) {
         return "<span style=\'background:'black';color:'red';\'>Yes</span>";
     }
-    return "<span style=\'background:'black';color:'white';\'>False</span>";
+    return "<span style=\'background:'black';color:'white';\'>No</span>";
 };
 format_activenonactive = function (val, row) {
     if (parseInt(val, 10) === 1) {
